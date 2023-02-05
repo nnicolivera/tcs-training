@@ -1,0 +1,21 @@
+{
+  "todos": [
+    {
+      "content": "dasda",
+      "id": 1
+    },
+    {
+      "content": "dsadsa",
+      "id": 2
+    },
+    {
+      "content": "dadsa",
+      "id": 3
+    },
+    {
+      "content": "dasdsa",
+      "status": "To do",
+      "id": 4
+    }
+  ]
+}
