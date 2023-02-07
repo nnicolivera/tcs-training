@@ -21,7 +21,7 @@ const TodoList = () => {
 
         const todoObject = {
             content: value,
-            status: "To do"
+            status: 1
         }
 
         service

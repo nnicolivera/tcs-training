@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Input, Button } from '@mui/material'
-import TodoList from '../../components/TodoList/TodoList'
 
 const Login = () => {
     const navigate = useNavigate()
@@ -22,7 +21,7 @@ const Login = () => {
         e.preventDefault()
         localStorage.setItem('user', JSON.stringify({ user: userinput.value }))
         localStorage.setItem('psw', JSON.stringify({ psw: pswinput.value }))
-        navigate("../../containers/TodoForm/TodoForm")
+        navigate("/todoform")
     }
 
     return (
@@ -35,7 +34,6 @@ const Login = () => {
                 <br /><br />
                 <Button variant="outlined" type="submit">Login</Button>
             </form>
-            <TodoList />
         </>
     )
 }
