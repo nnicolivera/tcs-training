@@ -1,59 +1,54 @@
 import { useState, useEffect } from "react";
-import { TextField } from '@mui/material'
+import { TextField } from "@mui/material";
 import Lista from "../Lista/Lista";
-import service from '../../services/todos'
+import service from "../../services/todos";
 
 const TodoList = () => {
-    const [value, setValue] = useState('')
-    const [list, setList] = useState([])
+  const [value, setValue] = useState("");
+  const [list, setList] = useState([]);
 
-    useEffect(() => {
-        service
-            .getAll()
-            .then(initialTodos => {
-                setList(initialTodos)
-            })
-    }, [])
+  /*useEffect(() => {
+    service.getAll().then((initialTodos) => {
+      setList(initialTodos);
+    });
+  }, []);*/
 
-    const addTodo = (e) => {
-        e.preventDefault()
-        setList(list.concat(value))
+  const addTodo = (e) => {
+    e.preventDefault();
+    // setList(list.concat(value));
 
-        const todoObject = {
-            content: value,
-            status: 1
-        }
+    const todoObject = {
+      content: value,
+      status: 1,
+    };
 
-        service
-            .create(todoObject)
-            .then(returnedTodo => {
-                setList(list.concat(returnedTodo))
-                setValue('')
-            })
-    }
+    // service.create(todoObject).then((returnedTodo) => {
 
-    return (
-        <>
-            <form onSubmit={(e) => addTodo(e)}>
-                <div>
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        placeholder="Add Todo..."
-                        onChange={(event) => {
-                            setValue(event.target.value)
-                        }}
-                        value={value}
-                    />
-                </div>
-            </form>
+    // });
+    setList(list.concat(todoObject));
+    setValue("");
+    console.log(list);
+  };
 
-            <Lista
-                list={list}
-                setList={setList}
-            />
-        </>
-    )
-}
+  return (
+    <>
+      <form onSubmit={(e) => addTodo(e)}>
+        <div>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            placeholder="Add Todo..."
+            onChange={(event) => {
+              setValue(event.target.value);
+            }}
+            value={value}
+          />
+        </div>
+      </form>
 
-export default TodoList
+      <Lista list={list} setList={setList} />
+    </>
+  );
+};
+
+export default TodoList;
